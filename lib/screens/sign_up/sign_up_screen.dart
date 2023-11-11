@@ -7,9 +7,9 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
+      body: const SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: Sizes.size40,
@@ -20,7 +20,7 @@ class SignUpScreen extends StatelessWidget {
               Text(
                 'Sign up for TikTok',
                 style: TextStyle(
-                  fontSize: Sizes.size32,
+                  fontSize: Sizes.size36,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -32,6 +32,35 @@ class SignUpScreen extends StatelessWidget {
                   color: Colors.black38,
                 ),
                 textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.grey.shade100,
+        elevation: 2,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: Sizes.size32,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Already have an account?',
+                style: TextStyle(
+                  fontSize: Sizes.size16,
+                ),
+              ),
+              Gaps.h5,
+              Text(
+                'Log in',
+                style: TextStyle(
+                  fontSize: Sizes.size16,
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
             ],
           ),
