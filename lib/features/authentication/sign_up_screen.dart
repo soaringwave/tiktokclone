@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:tiktokclone/constants/gaps.dart';
 import 'package:tiktokclone/constants/sizes.dart';
-import 'package:tiktokclone/screens/sign_up/sign_up_screen.dart';
+import 'package:tiktokclone/features/authentication/login_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
-  void onSignupPressed(BuildContext context) {
-    Navigator.of(context).pop();
+  void onLoginPressed(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const LoginScreen(),
+      ),
+    );
   }
 
   @override
@@ -23,7 +27,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               Gaps.v40,
               Text(
-                'Log in to TikTok',
+                'Sign up for TikTok',
                 style: TextStyle(
                   fontSize: Sizes.size36,
                   fontWeight: FontWeight.w600,
@@ -31,7 +35,7 @@ class LoginScreen extends StatelessWidget {
               ),
               Gaps.v20,
               Text(
-                'Manage your account, check notifications, comment on videos, and more.',
+                'Create a profile, follow other accounts, make your own videos, and more.',
                 style: TextStyle(
                   fontSize: Sizes.size16,
                   color: Colors.black38,
@@ -53,16 +57,16 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Don\'t have an account?',
+                'Already have an account?',
                 style: TextStyle(
                   fontSize: Sizes.size16,
                 ),
               ),
               Gaps.h5,
               GestureDetector(
-                onTap: () => onSignupPressed(context),
+                onTap: () => onLoginPressed(context),
                 child: Text(
-                  'Sign up',
+                  'Log in',
                   style: TextStyle(
                     fontSize: Sizes.size16,
                     fontWeight: FontWeight.w600,
