@@ -7,11 +7,7 @@ class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   void onSignupPressed(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const SignUpScreen(),
-      ),
-    );
+    Navigator.of(context).pop();
   }
 
   @override
