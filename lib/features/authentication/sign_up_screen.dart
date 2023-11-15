@@ -46,11 +46,11 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               Gaps.v20,
-              const Text(
+              Text(
                 'Create a profile, follow other accounts, make your own videos, and more.',
                 style: TextStyle(
                   fontSize: Sizes.size16,
-                  color: Colors.black38,
+                  color: Theme.of(context).hintColor,
                 ),
                 textAlign: TextAlign.center,
               ),

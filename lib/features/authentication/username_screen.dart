@@ -27,11 +27,11 @@ class UsernameScreen extends StatelessWidget {
               ),
             ),
             Gaps.v12,
-            const Text(
+            Text(
               'You can always change this later.',
               style: TextStyle(
                 fontSize: Sizes.size16,
-                color: Colors.black38,
+                color: Theme.of(context).hintColor,
               ),
             ),
             Gaps.v24,
@@ -41,12 +41,12 @@ class UsernameScreen extends StatelessWidget {
                 hintText: 'Username',
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: Colors.grey.shade400,
+                    color: Theme.of(context).hintColor,
                   ),
                 ),
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: Colors.grey.shade400,
+                    color: Theme.of(context).hintColor,
                   ),
                 ),
               ),
