@@ -41,7 +41,7 @@ class _EmailScreenState extends State<EmailScreen> {
           children: [
             Gaps.v24,
             const Text(
-              'Input Email Address',
+              'What is your email?',
               style: TextStyle(
                 fontSize: Sizes.size28,
                 fontWeight: FontWeight.w600,
