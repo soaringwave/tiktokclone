@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tiktokclone/constants/gaps.dart';
 import 'package:tiktokclone/constants/sizes.dart';
+import 'package:tiktokclone/features/authentication/widgets/form_button.dart';
 
 class UsernameScreen extends StatefulWidget {
   const UsernameScreen({super.key});
@@ -73,39 +74,8 @@ class _UsernameScreenState extends State<UsernameScreen> {
               ),
             ),
             Gaps.v24,
-            FractionallySizedBox(
-              widthFactor: 1,
-              child: AnimatedContainer(
-                duration: const Duration(
-                  milliseconds: 500,
-                ),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: _username.isNotEmpty
-                      ? Theme.of(context).primaryColor
-                      : Colors.grey.shade300,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: Sizes.size12,
-                  ),
-                  child: AnimatedDefaultTextStyle(
-                    duration: const Duration(
-                      milliseconds: 500,
-                    ),
-                    style: TextStyle(
-                      color: _username.isNotEmpty
-                          ? Colors.white
-                          : Theme.of(context).hintColor,
-                      fontSize: Sizes.size20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    child: const Text(
-                      'Next',
-                    ),
-                  ),
-                ),
-              ),
+            FormButton(
+              abled: _username.isNotEmpty,
             )
           ],
         ),
