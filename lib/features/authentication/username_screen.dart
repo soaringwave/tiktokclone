@@ -19,7 +19,9 @@ class _UsernameScreenState extends State<UsernameScreen> {
   void initState() {
     super.initState();
     _usernameControl.addListener(() {
-      _username = _usernameControl.text;
+      setState(() {
+        _username = _usernameControl.text;
+      });
     });
   }
 
@@ -73,17 +75,22 @@ class _UsernameScreenState extends State<UsernameScreen> {
             Gaps.v24,
             FractionallySizedBox(
               widthFactor: 1,
-              child: Container(
+              child: AnimatedContainer(
+                duration: const Duration(
+                  milliseconds: 500,
+                ),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
+                  color: _username.isNotEmpty
+                      ? Theme.of(context).primaryColor
+                      : Colors.grey.shade300,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.symmetric(
                     vertical: Sizes.size12,
                   ),
                   child: Text(
-                    'Sign up',
+                    'Next',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: Sizes.size20,
