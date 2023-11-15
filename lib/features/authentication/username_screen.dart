@@ -51,6 +51,29 @@ class UsernameScreen extends StatelessWidget {
                 ),
               ),
             ),
+            Gaps.v24,
+            FractionallySizedBox(
+              widthFactor: 1,
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: Sizes.size12,
+                  ),
+                  child: Text(
+                    'Sign up',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: Sizes.size20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
