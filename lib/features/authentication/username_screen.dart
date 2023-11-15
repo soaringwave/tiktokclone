@@ -11,15 +11,15 @@ class UsernameScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Sign up'),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
           horizontal: Sizes.size40,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Gaps.v24,
-            Text(
+            const Text(
               'Create username',
               style: TextStyle(
                 fontSize: Sizes.size28,
@@ -27,11 +27,28 @@ class UsernameScreen extends StatelessWidget {
               ),
             ),
             Gaps.v12,
-            Text(
+            const Text(
               'You can always change this later.',
               style: TextStyle(
                 fontSize: Sizes.size16,
                 color: Colors.black38,
+              ),
+            ),
+            Gaps.v24,
+            TextField(
+              cursorColor: Theme.of(context).primaryColor,
+              decoration: InputDecoration(
+                hintText: 'Username',
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.grey.shade400,
+                  ),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.grey.shade400,
+                  ),
+                ),
               ),
             ),
           ],
