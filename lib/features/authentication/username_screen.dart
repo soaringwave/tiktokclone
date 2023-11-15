@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tiktokclone/constants/gaps.dart';
 import 'package:tiktokclone/constants/sizes.dart';
+import 'package:tiktokclone/features/authentication/email_screen.dart';
 import 'package:tiktokclone/features/authentication/widgets/form_button.dart';
 
 class UsernameScreen extends StatefulWidget {
@@ -24,6 +25,23 @@ class _UsernameScreenState extends State<UsernameScreen> {
         _username = _usernameControl.text;
       });
     });
+  }
+
+  @override
+  void dispose() {
+    _usernameControl.dispose();
+    super.dispose();
+  }
+
+  void onNextTap() {
+    if (_username.isNotEmpty) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const EmailScreen(),
+        ),
+      );
+    }
   }
 
   @override
@@ -74,8 +92,11 @@ class _UsernameScreenState extends State<UsernameScreen> {
               ),
             ),
             Gaps.v24,
-            FormButton(
-              abled: _username.isNotEmpty,
+            GestureDetector(
+              onTap: onNextTap,
+              child: FormButton(
+                abled: _username.isNotEmpty,
+              ),
             )
           ],
         ),
