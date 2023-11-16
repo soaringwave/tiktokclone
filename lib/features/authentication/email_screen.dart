@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tiktokclone/constants/gaps.dart';
 import 'package:tiktokclone/constants/sizes.dart';
+import 'package:tiktokclone/features/authentication/password_screen.dart';
 import 'package:tiktokclone/features/authentication/widgets/form_button.dart';
 
 class EmailScreen extends StatefulWidget {
@@ -38,6 +39,15 @@ class _EmailScreenState extends State<EmailScreen> {
     FocusScope.of(context).unfocus();
   }
 
+  void _onNextTap() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const PasswordScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -63,6 +73,7 @@ class _EmailScreenState extends State<EmailScreen> {
               ),
               Gaps.v24,
               TextField(
+                onEditingComplete: _onNextTap,
                 keyboardType: TextInputType.emailAddress,
                 autocorrect: false,
                 controller: _emailControl,
@@ -83,8 +94,11 @@ class _EmailScreenState extends State<EmailScreen> {
                 ),
               ),
               Gaps.v24,
-              FormButton(
-                disabled: _email.isEmpty || _isEmailValid() != null,
+              GestureDetector(
+                onTap: _onNextTap,
+                child: FormButton(
+                  disabled: _email.isEmpty || _isEmailValid() != null,
+                ),
               )
             ],
           ),
