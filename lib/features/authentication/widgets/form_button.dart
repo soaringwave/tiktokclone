@@ -4,10 +4,10 @@ import 'package:tiktokclone/constants/sizes.dart';
 class FormButton extends StatelessWidget {
   const FormButton({
     super.key,
-    required this.abled,
+    required this.disabled,
   });
 
-  final bool abled;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,8 @@ class FormButton extends StatelessWidget {
         ),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: abled ? Theme.of(context).primaryColor : Colors.grey.shade300,
+          color:
+              disabled ? Colors.grey.shade300 : Theme.of(context).primaryColor,
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -30,7 +31,7 @@ class FormButton extends StatelessWidget {
               milliseconds: 500,
             ),
             style: TextStyle(
-              color: abled ? Colors.white : Theme.of(context).hintColor,
+              color: disabled ? Theme.of(context).hintColor : Colors.white,
               fontSize: Sizes.size20,
               fontWeight: FontWeight.w600,
             ),
