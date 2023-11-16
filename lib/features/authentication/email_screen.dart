@@ -26,6 +26,14 @@ class _EmailScreenState extends State<EmailScreen> {
     });
   }
 
+  String? _isEmailValid() {
+    if (_email.isEmpty) return null;
+    final regExp = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    if (!regExp.hasMatch(_email)) return 'Email not valid';
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +60,7 @@ class _EmailScreenState extends State<EmailScreen> {
               controller: _emailControl,
               cursorColor: Theme.of(context).primaryColor,
               decoration: InputDecoration(
+                errorText: _isEmailValid(),
                 hintText: 'Email',
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
