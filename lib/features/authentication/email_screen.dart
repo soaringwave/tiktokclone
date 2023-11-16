@@ -34,53 +34,60 @@ class _EmailScreenState extends State<EmailScreen> {
     return null;
   }
 
+  void _onScaffoldTap() {
+    FocusScope.of(context).unfocus();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign up'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: Sizes.size40,
+    return GestureDetector(
+      onTap: _onScaffoldTap,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Sign up'),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Gaps.v24,
-            const Text(
-              'What is your email?',
-              style: TextStyle(
-                fontSize: Sizes.size28,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Gaps.v24,
-            TextField(
-              keyboardType: TextInputType.emailAddress,
-              autocorrect: false,
-              controller: _emailControl,
-              cursorColor: Theme.of(context).primaryColor,
-              decoration: InputDecoration(
-                errorText: _isEmailValid(),
-                hintText: 'Email',
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).hintColor,
-                  ),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).hintColor,
-                  ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: Sizes.size40,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Gaps.v24,
+              const Text(
+                'What is your email?',
+                style: TextStyle(
+                  fontSize: Sizes.size28,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-            ),
-            Gaps.v24,
-            FormButton(
-              disabled: _email.isEmpty || _isEmailValid() != null,
-            )
-          ],
+              Gaps.v24,
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                autocorrect: false,
+                controller: _emailControl,
+                cursorColor: Theme.of(context).primaryColor,
+                decoration: InputDecoration(
+                  errorText: _isEmailValid(),
+                  hintText: 'Email',
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).hintColor,
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).hintColor,
+                    ),
+                  ),
+                ),
+              ),
+              Gaps.v24,
+              FormButton(
+                disabled: _email.isEmpty || _isEmailValid() != null,
+              )
+            ],
+          ),
         ),
       ),
     );
