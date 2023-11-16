@@ -129,13 +129,40 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   ),
                 ),
               ),
+              Gaps.v12,
+              const Text(
+                'Your password must have:',
+                style: TextStyle(
+                  fontSize: Sizes.size14,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Gaps.v12,
+              Row(
+                children: [
+                  FaIcon(
+                    FontAwesomeIcons.circleCheck,
+                    color: _isPasswordValid()
+                        ? Colors.green
+                        : Theme.of(context).hintColor,
+                    size: Sizes.size24,
+                  ),
+                  Gaps.h10,
+                  const Text(
+                    '8 to 20 characters',
+                    style: TextStyle(
+                      fontSize: Sizes.size14,
+                    ),
+                  ),
+                ],
+              ),
               Gaps.v24,
               GestureDetector(
                 onTap: _onNextTap,
                 child: FormButton(
                   disabled: !_isPasswordValid(),
                 ),
-              )
+              ),
             ],
           ),
         ),
