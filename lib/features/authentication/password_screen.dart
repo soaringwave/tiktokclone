@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktokclone/constants/gaps.dart';
 import 'package:tiktokclone/constants/sizes.dart';
 import 'package:tiktokclone/features/authentication/password_screen.dart';
@@ -16,6 +17,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
   final TextEditingController _passwordControl = TextEditingController();
 
   String _password = '';
+  bool _isObscure = true;
 
   @override
   void initState() {
@@ -37,6 +39,16 @@ class _PasswordScreenState extends State<PasswordScreen> {
 
   void _onScaffoldTap() {
     FocusScope.of(context).unfocus();
+  }
+
+  void _clearText() {
+    _passwordControl.clear();
+  }
+
+  void _toggleObscure() {
+    setState(() {
+      _isObscure = !_isObscure;
+    });
   }
 
   void _onNextTap() {
@@ -73,11 +85,35 @@ class _PasswordScreenState extends State<PasswordScreen> {
               ),
               Gaps.v24,
               TextField(
+                obscureText: _isObscure,
                 onEditingComplete: _onNextTap,
                 autocorrect: false,
                 controller: _passwordControl,
                 cursorColor: Theme.of(context).primaryColor,
                 decoration: InputDecoration(
+                  suffix: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        onPressed: _clearText,
+                        icon: FaIcon(
+                          FontAwesomeIcons.solidCircleXmark,
+                          color: Theme.of(context).hintColor,
+                          size: Sizes.size24,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: _toggleObscure,
+                        icon: FaIcon(
+                          _isObscure
+                              ? FontAwesomeIcons.solidEye
+                              : FontAwesomeIcons.solidEyeSlash,
+                          color: Theme.of(context).hintColor,
+                          size: Sizes.size24,
+                        ),
+                      ),
+                    ],
+                  ),
                   errorText: _isPasswordValid(),
                   hintText: 'Make it strong',
                   enabledBorder: UnderlineInputBorder(
