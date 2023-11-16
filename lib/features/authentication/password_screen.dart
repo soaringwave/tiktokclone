@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktokclone/constants/gaps.dart';
 import 'package:tiktokclone/constants/sizes.dart';
+import 'package:tiktokclone/features/authentication/birthday_screen.dart';
 import 'package:tiktokclone/features/authentication/password_screen.dart';
 import 'package:tiktokclone/features/authentication/widgets/form_button.dart';
 
@@ -53,12 +54,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
   }
 
   void _onNextTap() {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => const PasswordScreenn(),
-    //   ),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const BirthdayScreen(),
+      ),
+    );
   }
 
   @override
