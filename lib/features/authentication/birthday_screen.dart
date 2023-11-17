@@ -15,16 +15,13 @@ class BirthdayScreen extends StatefulWidget {
 class _BirthdayScreenState extends State<BirthdayScreen> {
   final TextEditingController _birthdayControl = TextEditingController();
 
-  String _birthday = '';
+  final DateTime _birthday = DateTime.now();
 
   @override
   void initState() {
     super.initState();
-    _birthdayControl.addListener(() {
-      setState(() {
-        _birthday = _birthdayControl.text;
-      });
-    });
+    final dateText = _birthday.toString().split(' ').first;
+    _birthdayControl.text = dateText;
   }
 
   @override
@@ -34,14 +31,12 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   }
 
   void onNextTap() {
-    if (_birthday.isNotEmpty) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const EmailScreen(),
-        ),
-      );
-    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const EmailScreen(),
+      ),
+    );
   }
 
   @override
@@ -93,8 +88,8 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
             Gaps.v24,
             GestureDetector(
               onTap: onNextTap,
-              child: FormButton(
-                disabled: _birthday.isEmpty,
+              child: const FormButton(
+                disabled: true,
               ),
             )
           ],
