@@ -54,6 +54,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
   }
 
   void _onNextTap() {
+    if (_isPasswordValid() == false) return;
     Navigator.push(
       context,
       MaterialPageRoute(

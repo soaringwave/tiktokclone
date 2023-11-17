@@ -40,6 +40,7 @@ class _EmailScreenState extends State<EmailScreen> {
   }
 
   void _onNextTap() {
+    if (_isEmailValid() != null || _email.isEmpty) return;
     Navigator.push(
       context,
       MaterialPageRoute(
