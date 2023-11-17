@@ -12,9 +12,14 @@ class LoginFormScreen extends StatefulWidget {
 
 class _LoginFormScreenState extends State<LoginFormScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final Map<String, String> _formData = {};
 
   void _onLoginSubmitted() {
-    _formKey.currentState?.validate();
+    if (_formKey.currentState != null) {
+      if (_formKey.currentState!.validate()) {
+        _formKey.currentState!.save();
+      }
+    }
   }
 
   @override
@@ -35,7 +40,12 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                 children: [
                   TextFormField(
                     validator: (value) {
-                      return 'Email invalid';
+                      return;
+                    },
+                    onSaved: (newValue) {
+                      if (newValue != null) {
+                        _formData['email'] = newValue;
+                      }
                     },
                     cursorColor: Theme.of(context).primaryColor,
                     decoration: InputDecoration(
@@ -55,7 +65,12 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                   Gaps.v12,
                   TextFormField(
                     validator: (value) {
-                      return 'Password Invalid';
+                      return;
+                    },
+                    onSaved: (newValue) {
+                      if (newValue != null) {
+                        _formData['password'] = newValue;
+                      }
                     },
                     cursorColor: Theme.of(context).primaryColor,
                     decoration: InputDecoration(
