@@ -162,6 +162,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 onTap: _onNextTap,
                 child: FormButton(
                   disabled: !_isPasswordValid(),
+                  text: 'Next',
                 ),
               ),
             ],
