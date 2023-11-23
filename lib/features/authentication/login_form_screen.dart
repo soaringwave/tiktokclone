@@ -40,7 +40,10 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                 children: [
                   TextFormField(
                     validator: (value) {
-                      return;
+                      if (value == null || value.isEmpty) {
+                        return 'Email is not valid';
+                      }
+                      return null;
                     },
                     onSaved: (newValue) {
                       if (newValue != null) {
@@ -65,7 +68,10 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                   Gaps.v12,
                   TextFormField(
                     validator: (value) {
-                      return;
+                      if (value == null || value.isEmpty) {
+                        return 'Password is not valid';
+                      }
+                      return null;
                     },
                     onSaved: (newValue) {
                       if (newValue != null) {
