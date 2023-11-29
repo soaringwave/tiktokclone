@@ -4,6 +4,8 @@ import 'package:tiktokclone/constants/sizes.dart';
 
 enum Directions { right, left }
 
+enum Pages { first, second }
+
 class TutorialScreen extends StatefulWidget {
   const TutorialScreen({super.key});
 
@@ -13,6 +15,7 @@ class TutorialScreen extends StatefulWidget {
 
 class _TutorialScreenState extends State<TutorialScreen> {
   Directions _direction = Directions.right;
+  Pages _showingPage = Pages.first;
 
   void _onPanUpdate(DragUpdateDetails details) {
     if (details.delta.dx > 0) {
@@ -24,10 +27,23 @@ class _TutorialScreenState extends State<TutorialScreen> {
     }
   }
 
+  void _onPanEnd(DragEndDetails) {
+    if (_direction == Directions.left) {
+      setState(() {
+        _showingPage = Pages.second;
+      });
+    } else {
+      setState(() {
+        _showingPage = Pages.first;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onPanUpdate: _onPanUpdate,
+      onPanEnd: _onPanEnd,
       child: const Scaffold(
         body: SafeArea(
           child: AnimatedCrossFade(
