@@ -44,10 +44,10 @@ class _TutorialScreenState extends State<TutorialScreen> {
     return GestureDetector(
       onPanUpdate: _onPanUpdate,
       onPanEnd: _onPanEnd,
-      child: const Scaffold(
+      child: Scaffold(
         body: SafeArea(
           child: AnimatedCrossFade(
-            firstChild: Padding(
+            firstChild: const Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: Sizes.size40,
               ),
@@ -72,7 +72,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
                 ],
               ),
             ),
-            secondChild: Padding(
+            secondChild: const Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: Sizes.size40,
               ),
@@ -97,8 +97,10 @@ class _TutorialScreenState extends State<TutorialScreen> {
                 ],
               ),
             ),
-            crossFadeState: CrossFadeState.showFirst,
-            duration: Duration(milliseconds: 500),
+            crossFadeState: _showingPage == Pages.first
+                ? CrossFadeState.showFirst
+                : CrossFadeState.showSecond,
+            duration: const Duration(milliseconds: 500),
           ),
         ),
       ),
