@@ -103,6 +103,37 @@ class _TutorialScreenState extends State<TutorialScreen> {
             duration: const Duration(milliseconds: 500),
           ),
         ),
+        bottomNavigationBar: BottomAppBar(
+          child: GestureDetector(
+            onTap: () {},
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: Sizes.size40,
+                vertical: Sizes.size20,
+              ),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 500),
+                decoration: BoxDecoration(
+                  color: _showingPage == Pages.second
+                      ? Theme.of(context).primaryColor
+                      : Theme.of(context).hintColor,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  vertical: Sizes.size16 + Sizes.size2,
+                ),
+                child: const Text(
+                  'Enter the app',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: Sizes.size20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
