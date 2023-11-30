@@ -27,7 +27,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
     }
   }
 
-  void _onPanEnd(DragEndDetails) {
+  void _onPanEnd(DragEndDetails details) {
     if (_direction == Directions.left) {
       setState(() {
         _showingPage = Pages.second;
